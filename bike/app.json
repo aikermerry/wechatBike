@@ -1,0 +1,17 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "baike",
+    "navigationBarTextStyle":"black"
+  },
+   "permission":{
+    "scope.userLocation":{
+      "desc":"我愿意"
+    }
+  }
+}
