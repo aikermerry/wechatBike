@@ -1,12 +1,16 @@
 
 <map
+  id="myMap"
   longitude='{{longitude}}'
   latitude='{{latitude}}'
   controls='{{controls}}'
   show-location='true'
   scale='18'
   enable-rotate = "treue"
-  style ='width:100vh;height:100vh'
+  bindcontroltap="controltap"
+  style ='width:100%;height:100vh'
+  markers="{{markers}}"
+  bindregionchange="regionchange"
 
   >
 

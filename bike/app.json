@@ -1,7 +1,11 @@
 {
   "pages":[
+    "pages/register/register",
     "pages/index/index",
+    
     "pages/logs/logs"
+   
+    
   ],
   "window":{
     "backgroundTextStyle":"light",
