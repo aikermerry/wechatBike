@@ -6,6 +6,8 @@ public class bike {
     private  double latitude;
     private int status;
 
+
+
     public String getId() {
         return id;
     }

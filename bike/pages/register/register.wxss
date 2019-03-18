@@ -1,1 +1,5 @@
 /* pages/register/register.wxss */
+.yanzheng_btn {
+  background-color: rgb(233, 223, 223);
+  color: rgb(89, 194, 29);
+}

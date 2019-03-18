@@ -4,7 +4,6 @@ Page({
   /**
    * 页面的初始数据
    */
-  
   data: {
       tabs: ["绑定", "充值押金", "实名认证","完成"],
       activeIndex: 0,
@@ -15,8 +14,12 @@ Page({
       phone:0,
       disabled:false,
       iscode: null,
+      code:null,
+      codename:"获取验证码",
+      color: "#fff",
     
   },
+
   tabClick: function (e) {
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
@@ -53,13 +56,19 @@ Page({
       })
       return false;
     } else {
+      console.log(this.data.countryCodes[this.data.countryCodeIndex])
       wx.request({
-        data: {},
-        'url': "locahost:80",
+        url: "http://localhost:8080/user/genCode",
+        data: {
+          iscode:this.data.countryCodes[this.data.countryCodeIndex],
+          phone:this.data.phone
+        },
+        
         success(res) {
-          console.log(res.data.data)
+          console.log(res.data)
           _this.setData({
-            iscode: res.data.data
+            iscode: res.data,
+            disabled: true
           })
           var num = 61;
           var timer = setInterval(function () {
@@ -117,7 +126,8 @@ Page({
       })
       return false;
     } else {
-      wx.setStorageSync('name', this.data.name);
+      
+     
       wx.setStorageSync('phone', this.data.phone);
       wx.redirectTo({
         url: '../add/add',
@@ -130,7 +140,8 @@ Page({
     this.getCode();
     var that = this
     that.setData({
-      disabled: true
+      disabled: false,
+      color: '#ccc',
       
     })
   },
@@ -156,6 +167,13 @@ Page({
     this.setData({
       isAgree: !!e.detail.value.length
     });
+  },
+//区号函数
+  bindCountryCodeChange: function (e) {
+    console.log('picker country code 发生选择改变，携带值为', e.detail.value);
+    this.setData({
+      countryCodeIndex: e.detail.value
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

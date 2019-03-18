@@ -14,12 +14,13 @@ import javax.xml.ws.RequestWrapper;
 @Controller
 public class controller {
     //加上映射的地址
-    @RequestMapping("/hello")
+    @RequestMapping("/bikes")
     //使返回以Jsion形式返回，就不需要刷新页面就可以更新
     @ResponseBody
-    public String hello(@RequestBody bike bike)
+    public String bikes(@RequestBody bike bike)
     {
-        return "hello ：";
+
+        return "ok";
 
     }
 }
