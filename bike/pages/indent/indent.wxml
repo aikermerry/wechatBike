@@ -1,0 +1,43 @@
+<view class="cont">
+  <view class="tou" >
+    <view bindtap="gotogeren">
+      绑定手机
+     
+    </view>
+    <view>-></view>
+    <view bindtap="gotodianpu">支付押金</view>
+    <view>-></view>
+    <view bindtap="gotoshenhe">实名认证
+     <view class="san">
+        <text class="jiao"></text>
+      </view>
+    </view>
+  </view>
+
+  <view class="shiming">实名认证
+    <text style="font-size:24rpx">（请上传真实的个人信息，认证通过后将无法修改）</text>
+  </view>
+
+
+  <form bindsubmit="reg">
+    <view class="xing">姓名
+      <input placeholder-class='placeholder' placeholder='请输入真实姓名' class="in" name="linkman" value="{{linkman}}" />
+    </view>
+
+    <view class="xing">身份证/护照
+      <input placeholder-class='placeholder' placeholder='请输入身份证/护照' class="in" name='idc_id' value="{{idc_id}}" />
+    </view>
+    <view class="xing">联系电话
+      <input placeholder-class='placeholder' placeholder='请输入联系电话' class="in" name='tel' value="{{tel}}" />
+    </view>
+
+    <view style="text-align:right;font-size:24rpx;margin-right:60rpx;margin-top:20rpx;color:#999999;">请填写正确的有效电话，工作人员讲会电话联系你</view>
+
+    <view style="padding-top:30rpx;font-size:30rpx;text-align:center;color:#cccccc">————请确认以上信息准确无误————</view>
+
+    <button type="" form-type="submit" hover-class='button-hover' class='su'>保存并下一步</button>
+  </form>
+
+
+
+</view>

@@ -1,12 +1,15 @@
-package com.example.bike;
+package com.example.bike.bikeservice.var;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "bikes")
 public class bike {
     private String id;
+
     private double longitude;
     private  double latitude;
+
     private int status;
-
-
 
     public String getId() {
         return id;

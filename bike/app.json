@@ -1,21 +1,26 @@
 {
   "pages":[
-   
+    "pages/coverPage/coverPage",
     "pages/index/index",
+
+    "pages/logs/logs",
+   
+    "pages/pay/payRMB",
     "pages/register/register",
-    "pages/logs/logs"
+    "pages/indent/indent"
+   
    
     
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "baike",
+    "navigationBarTitleText": "深度单车",
     "navigationBarTextStyle":"black"
   },
    "permission":{
     "scope.userLocation":{
-      "desc":"我愿意"
+      "desc":"位置信息仅用来获取当前位置的单车"
     }
   }
 }

@@ -2,4 +2,46 @@
 .yanzheng_btn {
   background-color: rgb(233, 223, 223);
   color: rgb(89, 194, 29);
+
+}
+.weui-cells{
+  font-size: 30rpx;
+
+}
+
+.regist{
+  padding: 25rpx
+}
+.cont{
+  font-family: "宋体";
+   width: 100%;
+
+}
+
+.tou{
+  display: flex;
+  justify-content: center;
+  background: #547c2f;
+  color: 	#fff;
+  font-size: 30rpx;
+}
+.tou view{
+  padding: 25rpx 20rpx;
+}
+.jiao{
+    float:left;
+    clear:both;  
+    font-size: 0;  
+    line-height: 0;  
+    border-width: 13px;  
+    border-color:  #547c2f;
+    border-bottom-width: 0;  
+    border-style: dashed;  
+    border-top-style: solid;  
+    border-left-color: transparent;  
+    border-right-color: transparent;  
+}
+.san{
+  position: absolute;
+  top: 67rpx;
 }

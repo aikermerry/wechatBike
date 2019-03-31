@@ -10,3 +10,17 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.title{
+	background-color: #f2f2f2;
+	padding: 30rpx 0 30rpx 50rpx;
+	font-size: 28rpx;
+	color: #000;
+}
+.tapbar{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #fff;
+	padding: 40rpx;
+}

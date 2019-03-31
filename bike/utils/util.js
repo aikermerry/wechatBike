@@ -17,3 +17,16 @@ const formatNumber = n => {
 module.exports = {
   formatTime: formatTime
 }
+//用于获取用户执行的状态
+function get(key){
+  var status = wx.getStorageSync(key);
+  console.log(status)
+  if(!status){
+    status = getApp().globalData[key];
+
+  }
+  return status;
+}
+module.exports = {
+ get
+}

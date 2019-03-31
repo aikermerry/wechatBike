@@ -17,6 +17,7 @@ Page({
       code:null,
       codename:"获取验证码",
       color: "#fff",
+      codeCheck:false
     
   },
 
@@ -36,6 +37,18 @@ Page({
       })
     }
   },
+  //输入验证码获取
+  inputcode: function (e) {
+    var that = this
+    if (e.detail.value.length>=4){
+      console.log(e.detail.value),
+      that.setData({
+        code:e.detail.value
+      })
+    }
+    
+  },
+
 
   getCode: function () {
     var a = this.data.phone;
@@ -60,15 +73,21 @@ Page({
       wx.request({
         url: "http://localhost:8080/user/genCode",
         data: {
-          iscode:this.data.countryCodes[this.data.countryCodeIndex],
+          contrycode:this.data.countryCodes[this.data.countryCodeIndex],
           phone:this.data.phone
         },
         
         success(res) {
+          wx.showToast({
+            title: '发送成功'
+          }),
           console.log(res.data)
           _this.setData({
             iscode: res.data,
-            disabled: true
+            disabled: true,
+            })
+        }
+
           })
           var num = 61;
           var timer = setInterval(function () {
@@ -87,14 +106,17 @@ Page({
             }
           }, 1000)
         }
-      })
-
-    }
-
-
   },
+      
+
+    
+
+    
+
+
 //提交表单
   submit: function () {
+    var that = this;
     var myreg = /^(14[0-9]|13[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$$/;
     if (this.data.phone == "") {
       wx.showToast({
@@ -126,14 +148,67 @@ Page({
       })
       return false;
     } else {
-      
+      wx.request({
+        url: "http://localhost:8080/user/check",
+        data: {
+        phone: this.data.phone
+        },
+
+        success(res) {
+          console.log(res.data==that.data.code)
+          if (res.data == that.data.code){
+            console.log("验证码完全正确时")
+            
+            wx.setStorageSync('phone', that.data.phone);
+            //注册成功，将用户信息保存到数据库
+            wx.request({
+              url: 'http://localhost:8080/user/save',
+              data:{
+                phone:that.data.phone,
+                date:new Date()
+              },
+              method :"POST",
+              success(res){
+                if(res.data){
+                  wx.setStorageSync('status', 1);//将状态存入内存中
+                  wx.redirectTo({
+                    url: '../pay/payRMB',
+                    test: "注册成功",
+
+                  })
+                
+
+                }
+                else{
+                  wx.showToast({
+                    title: '注册失败，请再次尝试',
+                    icon: 'none',
+                    duration: 1000
+                  })
+
+                }
+              }
+
+            })
+
+
+          }else {
+            wx.showToast({
+              title: '验证超时',
+              icon: 'none',
+              duration: 1000
+            })
+            return false;
+          }
+        }
+        });
      
-      wx.setStorageSync('phone', this.data.phone);
-      wx.redirectTo({
-        url: '../add/add',
-      })
+
     }
-  },
+    },
+    
+  
+    
 
 //点击获取验证码
   genVerifycode: function(){
@@ -163,14 +238,16 @@ Page({
 
 
   },
+
+
   bindAgreeChange: function (e) {
     this.setData({
       isAgree: !!e.detail.value.length
     });
   },
-//区号函数
+//区号函数  +87
   bindCountryCodeChange: function (e) {
-    console.log('picker country code 发生选择改变，携带值为', e.detail.value);
+
     this.setData({
       countryCodeIndex: e.detail.value
     })

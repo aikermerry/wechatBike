@@ -1,0 +1,32 @@
+
+<view class="cont">
+  <view class="tou" >
+    <view bindtap="gotogeren">
+      绑定手机
+     
+    </view>
+    <view>-></view>
+    <view bindtap="gotodianpu">支付押金
+     <view class="san">
+        <text class="jiao"></text>
+      </view></view>
+    <view>-></view>
+    <view bindtap="gotoshenhe">实名认证</view>
+  </view>
+</view>
+
+
+<view class="container">
+    <view class="overage">
+        <view>
+            <text class="overage-header">充值押金（元）</text>
+        </view>
+        <view>
+            <text class="overage-amount">99</text>
+        </view>
+        <view>
+            <text bindtap="overageDesc" class="overage-desc">押金说明</text>
+        </view>       
+    </view>
+    <button bindtap="charge" class="btn-charge">充值</button>
+</view>
