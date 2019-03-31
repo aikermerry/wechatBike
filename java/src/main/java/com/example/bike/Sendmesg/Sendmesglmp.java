@@ -17,7 +17,7 @@ public class Sendmesglmp implements Sendmesg {
         boolean FLG = true;
         DefaultProfile profile = DefaultProfile.getProfile(
                 "default",          // 地域ID
-                "LTAI7po6JPMog5cG",      // RAM账号的AccessKey ID
+                      // RAM账号的AccessKey ID
                 "RjLbXyduymIHu5MIDs5iXhcwEAVt81"); // RAM账号Access Key Secret
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = new CommonRequest();

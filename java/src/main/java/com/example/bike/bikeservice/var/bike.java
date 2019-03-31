@@ -1,15 +1,26 @@
 package com.example.bike.bikeservice.var;
 
+import org.springframework.data.mongodb.core.index.GeoSpatialIndexType;
+import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "bikes")
 public class bike {
     private String id;
-
-    private double longitude;
-    private  double latitude;
+    @GeoSpatialIndexed(type = GeoSpatialIndexType.GEO_2DSPHERE)
+    private double[] location;
+    //private double longitude;
+   // private  double latitude;
 
     private int status;
+
+    public double[] getLocation() {
+        return location;
+    }
+
+    public void setLocation(double[] location) {
+        this.location = location;
+    }
 
     public String getId() {
         return id;
@@ -19,21 +30,6 @@ public class bike {
         this.id = id;
     }
 
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatgitude(double latitude) {
-        this.latitude = latitude;
-    }
 
     public int getStatus() {
         return status;

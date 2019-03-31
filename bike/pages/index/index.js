@@ -171,9 +171,10 @@ wx.getSystemInfo({
                     wx.request({
                           url: 'http://localhost:8080/bikes',
                       data:{
-                        longitude:res.longitude,
-                        latitude:res.latitude,
-                        status:1,
+                        location: [res.longitude,res.latitude],
+                       // longitude:res.longitude,
+                        //latitude:res.latitude,
+                        status:1, 
                       },
                       
                       method :"POST",
@@ -207,7 +208,10 @@ wx.getSystemInfo({
             
                     console.log("经度：",res.longitude),
                      console.log("纬度：",res.latitude),
+
                     findBike(res.latitude, res.longitude, that)
+                    
+
 
                   
                 },
@@ -242,11 +246,11 @@ function findBike( latitude, longitude,that){
     method: "GET",
     success: function (res) {
       console.log(res.data)
-      var bikes = res.data.map((bike) =>{
+      var bikes = res.data.map((geoResult) =>{
         return {
-          longitude:bike.longitude,
-          latitude:bike.latitude,
-          id:bike.id,
+          longitude: geoResult.content.location[0],
+          latitude: geoResult.content.location[1],
+          id: geoResult.content.id,
           iconPath: '/image/3.png',
           width: 40,
           height: 40,
